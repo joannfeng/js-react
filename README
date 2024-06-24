@@ -1,1 +1,17 @@
+# E-commerce Pet Supply Project:
 
+This is a project to pull E-commerce pet supply
+data from a CSV file and use a Python script to
+upload it into a PostgreSQL database.
+
+## Dataset:
+
+https://www.kaggle.com/datasets/kanchana1990/e-commerce-pet-supplies-dataset
+
+## PostgreSQL references:
+
+Log in as the superuser: `psql -U postgres`
+Password: `password` Default port: `5432` Database
+creation using superuser:
+`createdb -U postgres -h localhost [dbname]` Show
+all tables in the current schema: `\dt`
