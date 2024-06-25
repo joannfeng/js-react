@@ -28,9 +28,26 @@ CSV HEADER;'''
   
 cursor.execute(sql2) 
 
+# add new column "animal" as text array 
+sql3 = '''ALTER TABLE PET_SUPPLIES
+ADD COLUMN animal text[];'''
+  
+cursor.execute(sql3)
+
+# update animal column based on the keywords in title
+sql4 = '''UPDATE PET_SUPPLIES
+SET animal = CASE
+    WHEN title ILIKE '%dog%' AND title ILIKE '%cat%' THEN ARRAY['cat', 'dog']
+    WHEN title ILIKE '%dog%' THEN ARRAY['dog']
+    WHEN title ILIKE '%cat%' THEN ARRAY['cat']
+    ELSE ARRAY['other']
+END;'''
+  
+cursor.execute(sql4)
+
 # display table details once complete  
-sql3 = '''SELECT * FROM PET_SUPPLIES;'''
-cursor.execute(sql3) 
+sql5 = '''SELECT * FROM PET_SUPPLIES;'''
+cursor.execute(sql5) 
 for i in cursor.fetchall(): 
     print(i) 
   
